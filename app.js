@@ -7,7 +7,7 @@ var mongoose = require('mongoose')
   
 var fs = require('fs');
 var path = require('path');
-require('dotenv/config');
+// require('dotenv/config');
 
 
 // Step 2
