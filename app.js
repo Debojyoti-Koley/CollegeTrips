@@ -62,14 +62,27 @@ var upload = multer({ storage: storage });
 // Step 6 - load the mongoose model for Image
   
 var imgModel = require('./model');
+var imgAModel = require('./newModel');
 
 
 
 
 // Step 7 - the GET request handler that provides the HTML UI
   
-app.get('/', (req, res) => {
+app.get('/myDashboard', (req, res) => {
     imgModel.find({}, (err, items) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }
+        else {
+            res.render('myDashboard', { items: items });
+        }
+    });
+});
+
+app.get('/', (req, res) => {
+    imgAModel.find({}, (err, items) => {
         if (err) {
             console.log(err);
             res.status(500).send('An error occurred', err);
@@ -80,14 +93,27 @@ app.get('/', (req, res) => {
     });
 });
 
+
 app.get('/upload', (req, res) => {
     imgModel.find({}, (err, items) => {
         if (err) {
             console.log(err);
             res.status(500).send('An error occurred', err);
-        }
+        }   
         else {
             res.render('imagesPage1', { items: items });
+        }
+    });
+});
+
+app.get('/mainUpload', (req, res) => {
+    imgAModel.find({}, (err, items) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }   
+        else {
+            res.render('mainUpload', { items: items });
         }
     });
 });
@@ -113,6 +139,31 @@ app.post('/upload', upload.single('image'), (req, res, next) => {
         }
     }
     imgModel.create(obj, (err, item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            // item.save();
+            res.redirect('/');
+        }
+    });
+});
+
+
+
+app.post('/mainUpload', upload.single('image'), (req, res, next) => {
+  
+    var obj = {
+        name: req.body.name,
+        distance: req.body.distance,
+        date: req.body.date,
+        desc: req.body.desc,
+        img: {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    imgAModel.create(obj, (err, item) => {
         if (err) {
             console.log(err);
         }
