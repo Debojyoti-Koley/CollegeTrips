@@ -132,6 +132,7 @@ app.post('/upload', upload.single('image'), (req, res, next) => {
         name: req.body.name,
         distance: req.body.distance,
         date: req.body.date,
+        author: req.body.author,
         desc: req.body.desc,
         img: {
             data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
@@ -157,6 +158,7 @@ app.post('/mainUpload', upload.single('image'), (req, res, next) => {
         name: req.body.name,
         distance: req.body.distance,
         date: req.body.date,
+        author: req.body.author,
         desc: req.body.desc,
         img: {
             data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
