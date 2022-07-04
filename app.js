@@ -223,6 +223,9 @@ const server = http.createServer(app);
 
 const users = require('./data').userDB;
 
+
+
+
 app.post('/register', async (req, res) => {
     try{
         let foundUser = users.find((data) => req.body.email === data.email);
@@ -240,7 +243,14 @@ app.post('/register', async (req, res) => {
             console.log('User list', users);
     
             // res.send("<div align ='center'><h2>Registration successful</h2></div><br><br><div align='center'><a href='./login.html'>login</a></div><br><br><div align='center'><a href='./registration.html'>Register another user</a></div>");
-            res.sendFile(path.join(__dirname,'./static/login.html'));
+
+            // res.sendFile(path.join(__dirname,'./static/login.html'));
+
+            
+            // alert("Registration successful, please sign in");
+
+            res.redirect('/static/auth.html');
+
         } else {
             res.send("<div align ='center'><h2>Email already used</h2></div><br><br><div align='center'><a href='./registration.html'>Register again</a></div>");
         }
