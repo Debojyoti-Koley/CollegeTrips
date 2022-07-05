@@ -6,6 +6,7 @@ var imageSchema = new mongoose.Schema({
     name: String,
     distance: String,
     date: String,
+    author: String,
     desc: String,
     img:
     {
