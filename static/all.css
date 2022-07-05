@@ -200,3 +200,49 @@ button:hover:after{
 	color: #fff;
 	text-align: center;
 }
+
+
+
+/* @media only screen and (min-width: 395px) and (max-width: 780px) */
+
+@media only screen and (max-width: 415px){
+    .banner h1{
+        margin: 1%;
+    }
+    .banner p{
+        margin: 2%;
+    }
+    .main_body{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .main_body img{
+        height: 30vh;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 416px) and (max-width: 780px){
+    .main_body{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .main_body img{
+        height: 35vh;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 781px) and (max-width: 1200px){
+    .main_body{
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .main_body img{
+        height: 45vh;
+        width: 100%;
+    }
+}
