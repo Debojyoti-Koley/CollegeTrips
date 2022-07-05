@@ -221,6 +221,11 @@ button:hover:after{
         height: 30vh;
         width: 100%;
     }
+    .main_body h2 {
+        font-size: 2rem;
+        margin-bottom: 4.3%;
+        color: rgb(1, 41, 97);
+    }
 }
 
 @media only screen and (min-width: 416px) and (max-width: 780px){
