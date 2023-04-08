@@ -18,10 +18,16 @@ var path = require('path');
 
 
     mongoose.connect(
-        "mongodb+srv://Me:abcd1234@cluster0.5dt41.mongodb.net/CollegeTrips",
-        { useNewUrlParser: true },
-        { useUnifiedTopology: true },err =>{
-            console.log('connected')
+        "mongodb+srv://Debojyoti:abcd1234@cluster0.xenlwdv.mongodb.net/?retryWrites=true&w=majority",
+        { useNewUrlParser: true ,
+         useUnifiedTopology: true },err =>{
+            if(err){
+                console.log(err);
+            }
+            else{
+                 console.log('connected')
+            }
+           
         }
       );
 
@@ -84,7 +90,7 @@ app.get('/', (req, res) => {
     imgAModel.find({}, (err, items) => {
         if (err) {
             console.log(err);
-            res.status(500).send('An error occurred', err);
+            res.status(500).send('An error occurred');
         }
         else {
             res.render('imagesPage', { items: items });
